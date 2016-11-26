@@ -13,6 +13,7 @@
  * Toplevel LinkedList structure.
  */
 struct LinkedList {
+    struct LinkedList *list
     struct LinkedListNode *first;
     struct LinkedListNode *last;
 };
@@ -145,7 +146,7 @@ LinkedList_remove(LinkedList *list, void *data) {
 	    return;
 	}
     }
-}    
+}
 
 /**
  * Return the void* value at the given index in the given LinkedList, or
