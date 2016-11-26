@@ -21,11 +21,11 @@ Database* DatabaseNew(int i) {
     return db;
 }
 
-void SetRelations(Database db, char c){
+void SetRelations(Database *db, char c){
 
 }
 
-void insert(Database db, char *c){
+void insert(Database *db, char *c){
   LinkedList *list = LinkedList_new();
   char delim[] = " ,";
   char* token;
@@ -34,4 +34,22 @@ void insert(Database db, char *c){
     LinkedList_add_at_end(list, token);
   }
   LinkedList_add_at_end(db.list,list);
+}
+
+void delete(Database *db, char *c){
+  char delim[] = " ,";
+  char* token;
+  for (token = strtok(c, delim); token; token = strtok(NULL, delim))
+  {
+
+  }
+}
+
+void lookup(Database *db, char *c){
+  char delim[] = " ,";
+  char* token;
+  for (token = strtok(c, delim); token; token = strtok(NULL, delim))
+  {
+
+  }
 }
