@@ -42,9 +42,6 @@ void delete(Database *db, char *c){
   char delim[] = " ,";
   char* token;
   int toDelete=1;
-  //add an iterator for the linkedlist. iterate through everything, then put everything that matches into a new "database"
-  //when you reach a "*", break, otherwise check it.
-
   //looping through "big" arraylist
   LinkedListIterator *lli =  LinkedList_iterator(db->list);
   while (LinkedListIterator_has_next(lli)){
@@ -57,7 +54,9 @@ void delete(Database *db, char *c){
       if (LinkedListIterator_has_next(lliTup)){
         void *dataTup = LinkedListIterator_next(lliTup);
         char *str = (char*)dataTup;
+        //ignores checking if "*"
         if(strcmp(token, "*")!=0){
+          //breaks when ANY part of the LL doesnt match
           if(strcmp(token, str)!=0){
             toDelete=0;
             break;
