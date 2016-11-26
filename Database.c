@@ -15,8 +15,9 @@ struct Database{
 };
 typedef struct Database Database;
 
-Database* DatabaseNew(int i) {
+Database* Database_New(int i) {
     Database *db = (Database*)malloc(sizeof(Database));
+    db->list = LinkedList_new();
     relations = i;
     return db;
 }
@@ -40,22 +41,71 @@ void insert(Database *db, char *c){
 void delete(Database *db, char *c){
   char delim[] = " ,";
   char* token;
-  //tokenize the input string
-  for (token = strtok(c, delim); token; token = strtok(NULL, delim))
-  {
+  int toDelete=1;
+  //add an iterator for the linkedlist. iterate through everything, then put everything that matches into a new "database"
+  //when you reach a "*", break, otherwise check it.
 
+  //looping through "big" arraylist
+  LinkedListIterator *lli =  LinkedList_iterator(db->list);
+  while (LinkedListIterator_has_next(lli)){
+    toDelete=1;
+    void *data = LinkedListIterator_next(lli);
+    //going through the individual linked lists
+    LinkedListIterator *lliTup =  LinkedList_iterator(data);
+
+    for (token = strtok(c, delim); token; token = strtok(NULL, delim)){
+      if (LinkedListIterator_has_next(lliTup)){
+        void *dataTup = LinkedListIterator_next(lliTup);
+        char *str = (char*)dataTup;
+        if(strcmp(token, "*")!=0){
+          if(strcmp(token, str)!=0){
+            toDelete=0;
+            break;
+          }
+        }
+      }
+      else{
+        break;
+      }
+    }
+    if(toDelete=1){
+      LinkedList_remove(db->list, data);
+    }
   }
 }
 
 void lookup(Database *db, char *c){
   char delim[] = " ,";
   char* token;
+  int toDelete=1;
   //add an iterator for the linkedlist. iterate through everything, then put everything that matches into a new "database"
   //when you reach a "*", break, otherwise check it.
 
-  //tokenize the input string
-  for (token = strtok(c, delim); token; token = strtok(NULL, delim))
-  {
+  //looping through "big" arraylist
+  LinkedListIterator *lli =  LinkedList_iterator(db->list);
+  while (LinkedListIterator_has_next(lli)){
+    toDelete=1;
+    void *data = LinkedListIterator_next(lli);
+    //going through the individual linked lists
+    LinkedListIterator *lliTup =  LinkedList_iterator(data);
 
+    for (token = strtok(c, delim); token; token = strtok(NULL, delim)){
+      if (LinkedListIterator_has_next(lliTup)){
+        void *dataTup = LinkedListIterator_next(lliTup);
+        char *str = (char*)dataTup;
+        if(strcmp(token, "*")!=0){
+          if(strcmp(token, str)!=0){
+            toDelete=0;
+            break;
+          }
+        }
+      }
+      else{
+        break;
+      }
+    }
+    if(toDelete=1){
+      LinkedList_remove(db->list, data);
+    }
   }
 }

@@ -13,7 +13,6 @@
  * Toplevel LinkedList structure.
  */
 struct LinkedList {
-    struct LinkedList *list
     struct LinkedListNode *first;
     struct LinkedListNode *last;
 };
