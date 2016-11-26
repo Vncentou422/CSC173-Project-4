@@ -29,6 +29,7 @@ void insert(Database *db, char *c){
   LinkedList *list = LinkedList_new();
   char delim[] = " ,";
   char* token;
+  //tokenize the input string
   for (token = strtok(c, delim); token; token = strtok(NULL, delim))
   {
     LinkedList_add_at_end(list, token);
@@ -39,6 +40,7 @@ void insert(Database *db, char *c){
 void delete(Database *db, char *c){
   char delim[] = " ,";
   char* token;
+  //tokenize the input string
   for (token = strtok(c, delim); token; token = strtok(NULL, delim))
   {
 
@@ -48,6 +50,10 @@ void delete(Database *db, char *c){
 void lookup(Database *db, char *c){
   char delim[] = " ,";
   char* token;
+  //add an iterator for the linkedlist. iterate through everything, then put everything that matches into a new "database"
+  //when you reach a "*", break, otherwise check it.
+
+  //tokenize the input string
   for (token = strtok(c, delim); token; token = strtok(NULL, delim))
   {
 
