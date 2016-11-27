@@ -4,12 +4,6 @@
 #include <stdlib.h>
 #include "LinkedList.h"
 
-#define MAX 100
-#define EMPTY 0
-/*
-int size = EMPTY;
-char x[MAX];
-*/
 struct Database{
   struct LinkedList *list;
   int relations;
@@ -114,7 +108,7 @@ Database lookup(Database *db, char *c){
   }
   free(lli);
   return newdb;
-  
+
 }
 
 int main(){
