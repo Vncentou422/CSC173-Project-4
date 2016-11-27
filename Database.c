@@ -103,7 +103,7 @@ Database lookup(Database *db, char *c){
     }
     free(lliTup);
     if(toAdd=1){
-      LinkedList_add(newdb->list, data);
+      LinkedList_add_at_end(newdb->list, data);
     }
   }
   free(lli);
