@@ -1,6 +1,7 @@
 //CSC 173 Project 2
 
 #include <stdio.h>
+#include <stdlib.h>
 #include "LinkedList.h"
 
 #define MAX 100
@@ -10,15 +11,15 @@ int size = EMPTY;
 char x[MAX];
 */
 struct Database{
-  struct LinkedList list;
-  int relations
+  struct LinkedList *list;
+  int relations;
 };
 typedef struct Database Database;
 
 Database* Database_New(int i) {
     Database *db = (Database*)malloc(sizeof(Database));
     db->list = LinkedList_new();
-    relations = i;
+    db->relations = i;
     return db;
 }
 
@@ -35,7 +36,7 @@ void insert(Database *db, char *c){
   {
     LinkedList_add_at_end(list, token);
   }
-  LinkedList_add_at_end(db.list,list);
+  LinkedList_add_at_end(db->list,list);
 }
 
 void delete(Database *db, char *c){
@@ -113,4 +114,9 @@ Database lookup(Database *db, char *c){
   }
   free(lliTup);
   return dbnew;
+  
+}
+
+int main(){
+  return 0;
 }
