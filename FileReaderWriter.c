@@ -6,6 +6,8 @@ int main(void)
 	
 	readFile("testFile.txt.txt");
 	
+	createFile();
+	
 }
 
 int readFile(char* path)
@@ -41,7 +43,13 @@ int createDoublyLinkedList()
 int createFile()
 {
 	
-	File *fileOut;
+	FILE *fileOut;
+	fileOut = fopen("outputFile.txt", "w");
+	
+	char* textToWrite = "xd";
+	fprintf(fileOut, "%s\n", textToWrite);
+	fclose(fileOut);
+	
 	
 	
 }
