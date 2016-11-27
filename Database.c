@@ -2,6 +2,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+//#include <Database.h>
+#include <string.h>
 #include "LinkedList.h"
 
 struct Database{
