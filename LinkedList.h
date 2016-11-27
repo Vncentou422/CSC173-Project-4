@@ -101,4 +101,9 @@ extern void *LinkedListIterator_next(LinkedListIterator *iterator);
  */
 extern void LinkedList_print_string_list(LinkedList *list);
 
+extern char* LinkedList_export(LinkedList *list);
+
+extern char* concat(const char *s1, const char *s2);
+
+extern int main();
 #endif
