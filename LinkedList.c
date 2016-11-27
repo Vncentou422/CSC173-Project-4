@@ -240,3 +240,14 @@ LinkedList_print_string_list(LinkedList *list) {
     }
     printf("\n");
 }
+
+int main(){
+  /*
+  LinkedList* x = LinkedList_new();
+  LinkedList_add_at_front(x, "hello");
+  LinkedList_add_at_end(x, "my");
+  LinkedList_add_at_end(x, "name");
+  LinkedList_print_string_list(x);
+  */
+  return 0;
+}
