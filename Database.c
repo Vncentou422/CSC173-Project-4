@@ -67,10 +67,12 @@ void delete(Database *db, char *c){
         break;
       }
     }
+    free(lliTup);
     if(toDelete=1){
       LinkedList_remove(db->list, data);
     }
   }
+  free(lli);
 }
 
 Database lookup(Database *db, char *c){
@@ -104,9 +106,11 @@ Database lookup(Database *db, char *c){
         break;
       }
     }
+    free(lliTup);
     if(toAdd=1){
       LinkedList_add(dbnew->list, data);
     }
   }
+  free(lliTup);
   return dbnew;
 }
