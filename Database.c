@@ -112,11 +112,30 @@ Database lookup(Database *db, char *c){
       LinkedList_add(dbnew->list, data);
     }
   }
-  free(lliTup);
+  free(lli);
   return dbnew;
   
 }
 
 int main(){
   return 0;
+}
+
+void export_db(char* filename){
+  char* ret;
+  LinkedListIterator *lli =  LinkedList_iterator(db->list);
+  while (LinkedListIterator_has_next(lli)){
+    void *data = LinkedListIterator_next(lli);
+    //going through the individual linked lists
+    ret = concat(ret, LinkedList_export(data));
+    ret = concat(ret, "\n");
+  }
+  free(lli);
+
+  FILE *fileOut;
+	fileOut = fopen(filename , "w");
+
+	fprintf(fileOut, "%s\n", ret);
+	fclose(fileOut);
+
 }

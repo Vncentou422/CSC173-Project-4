@@ -232,13 +232,36 @@ LinkedListIterator_next(LinkedListIterator *iterator) {
  */
 void
 LinkedList_print_string_list(LinkedList *list) {
-    for (LinkedListNode *node=list->first; node != NULL; node=node->next) {
-	printf("%s", node->data);
-	if (node->next != NULL) {
+  for (LinkedListNode *node=list->first; node != NULL; node=node->next) {
+    printf("%s", node->data);
+    if (node->next != NULL) {
 	    printf(" ");
-	}
     }
-    printf("\n");
+  }
+  printf("\n");
+}
+
+char*
+LinkedList_export(LinkedList *list){
+  char* ret;
+
+  for (LinkedListNode *node=list->first; node != NULL; node=node->next) {
+    ret = concat(ret, node->data);
+    if (node->next != NULL) {
+      ret = concat(ret, ",");
+    }
+  }
+  return ret;
+}
+
+char*
+concat(const char *s1, const char *s2)
+{
+    char *result = malloc(strlen(s1)+strlen(s2)+1);//+1 for the zero-terminator
+    //in real code you would check for errors in malloc here
+    strcpy(result, s1);
+    strcat(result, s2);
+    return result;
 }
 
 int main(){
