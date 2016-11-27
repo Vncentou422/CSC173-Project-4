@@ -39,7 +39,7 @@ void insert(Database *db, char *c){
 }
 
 void delete(Database *db, char *c){
-  char delim[] = " ,";
+  char delim[] = ",";
   char* token;
   int toDelete=1;
   //looping through "big" arraylist
@@ -74,7 +74,7 @@ void delete(Database *db, char *c){
 }
 
 void lookup(Database *db, char *c){
-  char delim[] = " ,";
+  char delim[] = ",";
   char* token;
   int toDelete=1;
   //add an iterator for the linkedlist. iterate through everything, then put everything that matches into a new "database"
