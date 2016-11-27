@@ -4,7 +4,7 @@
 int main(void)
 {
 	
-	query("What grade did Tim get in Computation and Formal Systems");
+	query("What grade did Tim Chu get in Computation and Formal Systems");
 	
 }
 
@@ -18,16 +18,17 @@ int query(char* queryInput)
 	{
 		
 		
-		printf("1");
 		int iterator = 15;
 		int iterator2 = 0;
+		int iterator3 = 0;
 		char studentName[100];
+		char courseName[100];
 		while(1< 2)
 		{
 			
 			if(queryInput[iterator] == 'g' && queryInput[iterator+1] == 'e' && queryInput[iterator+2] == 't')
 			{
-				printf("2");
+				
 				break;
 				
 			}
@@ -40,12 +41,23 @@ int query(char* queryInput)
 			 
 			}
 			
-			printf("%s", &studentName);
+			
 			
 		}
+		printf("%s", studentName);
+		
+		iterator += 6;
+		while(iterator < strlen(queryInput) + 1)
+		{
+			courseName[iterator3] = (char) queryInput[iterator];
+			iterator ++;
+			iterator3 ++;
+		}
+		
+		printf("%s" , courseName);
 		
 		
-		
+	
 		
 	}
 	
