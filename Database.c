@@ -109,11 +109,11 @@ Database lookup(Database *db, char *c){
     }
     free(lliTup);
     if(toAdd=1){
-      LinkedList_add(dbnew->list, data);
+      LinkedList_add(newdb->list, data);
     }
   }
   free(lli);
-  return dbnew;
+  return newdb;
   
 }
 
