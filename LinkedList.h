@@ -106,6 +106,6 @@ extern void LinkedList_print_string_list(LinkedList *list);
 
 extern char* LinkedList_export(LinkedList *list);
 
-extern char* concat(const char *s1, const char *s2);
+extern char* concat(char *s1, char *s2);
 
 #endif

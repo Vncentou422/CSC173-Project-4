@@ -85,12 +85,12 @@ Database* Db_Lookup(Database *db, char *c){
   newdb->list = LinkedList_new();
   //looping through "big" arraylist
   LinkedListIterator *lli =  LinkedList_iterator(db->list);
+  LinkedList_add_at_end(newdb->list, LinkedListIterator_next(lli));
   while (LinkedListIterator_has_next(lli)){
     toAdd=1;
     void *data = LinkedListIterator_next(lli);
     //going through the individual linked lists
     LinkedListIterator *lliTup =  LinkedList_iterator(data);
-
     for (token = strtok(dst, delim); token; token = strtok(NULL, delim)){
       if (LinkedListIterator_has_next(lliTup)){
         void *dataTup = LinkedListIterator_next(lliTup);
@@ -106,10 +106,11 @@ Database* Db_Lookup(Database *db, char *c){
         break;
       }
     }
-    free(lliTup);
-    if(toAdd=1){
+    if(toAdd==1){
       LinkedList_add_at_end(newdb->list, data);
     }
+    free(lliTup);
+
   }
   free(lli);
   return newdb;
@@ -129,8 +130,8 @@ void Db_Export(Database *db, char* filename){
   while (LinkedListIterator_has_next(lli)){
     void *data = LinkedListIterator_next(lli);
     //going through the individual linked lists
-    ret = concat(ret, LinkedList_export(data));
-    ret = concat(ret, "\n");
+    ret = strcat(ret, LinkedList_export(data));
+    ret = strcat(ret, "\n");
   }
   free(lli);
 
