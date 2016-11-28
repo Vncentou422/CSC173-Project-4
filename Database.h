@@ -1,4 +1,3 @@
-//CSC 173 Project 2
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -13,9 +12,10 @@ typedef struct{
 
 typedef struct Database Database;
 extern Database* Database_New(int i);
-extern void SetRelations(Database *db, char c);
-extern void insert(Database *db, char *c);
-extern void delete(Database *db, char *c);
-extern Database* lookup(Database *db, char *c);
-extern void export_db(Database*db,char* filename);
+extern void Db_SetRelations(Database* db, char *c);
+extern void Db_Insert(Database* db, char *c);
+extern void Db_Delete(Database* db, char *c);
+extern Database* Db_Lookup(Database *db, char *c);
+extern void Db_Export(Database* db, char* filename);
+extern Database* Db_Import(char* filename);
 extern int main();

@@ -108,5 +108,4 @@ extern char* LinkedList_export(LinkedList *list);
 
 extern char* concat(const char *s1, const char *s2);
 
-extern int main();
 #endif

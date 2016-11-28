@@ -2,9 +2,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "Database.h"
 #include <string.h>
 #include "LinkedList.h"
+#include "Database.h"
 
 struct Database{
   struct LinkedList *list;
@@ -19,11 +19,11 @@ Database* Database_New(int i) {
     return db;
 }
 
-void SetRelations(Database *db, char c){
-
+void Db_SetRelations(Database *db, char *c){
+  Db_Insert(db, c);
 }
 
-void insert(Database *db, char *c){
+void Db_Insert(Database *db, char *c){
   LinkedList *list = LinkedList_new();
   char delim[] = " ,";
   char* token;
@@ -35,7 +35,7 @@ void insert(Database *db, char *c){
   LinkedList_add_at_end(db->list,list);
 }
 
-void delete(Database *db, char *c){
+void Db_Delete(Database *db, char *c){
   char delim[] = ",";
   char* token;
   int toDelete=1;
@@ -72,7 +72,7 @@ void delete(Database *db, char *c){
   free(lli);
 }
 
-Database* lookup(Database *db, char *c){
+Database* Db_Lookup(Database *db, char *c){
   char delim[] = ",";
   char* token;
   int toAdd=1;
@@ -113,9 +113,7 @@ Database* lookup(Database *db, char *c){
 
 }
 
-
-
-void export_db(Database *db, char* filename){
+void Db_Export(Database *db, char* filename){
   char* ret;
   LinkedListIterator *lli =  LinkedList_iterator(db->list);
   while (LinkedListIterator_has_next(lli)){
@@ -130,9 +128,16 @@ void export_db(Database *db, char* filename){
 	fileOut = fopen(filename , "w");
 
 	fprintf(fileOut, "%s\n", ret);
+
 	fclose(fileOut);
 
 }
-int main(){
-  return 0;
+
+Database* Db_Import(char* filename){
+
 }
+
+
+// int main(){
+//   return 0;
+// }
