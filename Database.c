@@ -25,11 +25,12 @@ void Db_SetRelations(Database *db, char *c){
 
 void Db_Insert(Database *db, char *c){
   LinkedList *list = LinkedList_new();
-  char delim[] = ",";
   char* token;
+  char* dst = strdup(c);
   //tokenize the input string
-  for (token = strtok(c, delim); token; token = strtok(NULL, delim))
+  for (token = strtok(dst, ","); token != NULL; token = strtok(NULL, ","))
   {
+
     LinkedList_add_at_end(list, token);
   }
   LinkedList_add_at_end(db->list,list);
@@ -39,6 +40,7 @@ void Db_Delete(Database *db, char *c){
   char delim[] = ",";
   char* token;
   int toDelete=1;
+  char* dst = strdup(c);
   //looping through "big" arraylist
   LinkedListIterator *lli =  LinkedList_iterator(db->list);
   while (LinkedListIterator_has_next(lli)){
@@ -47,7 +49,7 @@ void Db_Delete(Database *db, char *c){
     //going through the individual linked lists
     LinkedListIterator *lliTup =  LinkedList_iterator(data);
 
-    for (token = strtok(c, delim); token; token = strtok(NULL, delim)){
+    for (token = strtok(dst, delim); token; token = strtok(NULL, delim)){
       if (LinkedListIterator_has_next(lliTup)){
         void *dataTup = LinkedListIterator_next(lliTup);
         char *str = (char*)dataTup;
@@ -76,6 +78,7 @@ Database* Db_Lookup(Database *db, char *c){
   char delim[] = ",";
   char* token;
   int toAdd=1;
+  char* dst = strdup(c);
   //add an iterator for the linkedlist. iterate through everything, then put everything that matches into a new "database"
   //when you reach a "*", break, otherwise check it.
   Database *newdb = (Database*)malloc(sizeof(Database));
@@ -88,7 +91,7 @@ Database* Db_Lookup(Database *db, char *c){
     //going through the individual linked lists
     LinkedListIterator *lliTup =  LinkedList_iterator(data);
 
-    for (token = strtok(c, delim); token; token = strtok(NULL, delim)){
+    for (token = strtok(dst, delim); token; token = strtok(NULL, delim)){
       if (LinkedListIterator_has_next(lliTup)){
         void *dataTup = LinkedListIterator_next(lliTup);
         char *str = (char*)dataTup;
@@ -112,7 +115,14 @@ Database* Db_Lookup(Database *db, char *c){
   return newdb;
 
 }
+void Db_print(Database *db){
+  LinkedListIterator *lli =  LinkedList_iterator(db->list);
+  while (LinkedListIterator_has_next(lli)){
+    void *data = LinkedListIterator_next(lli);
+    LinkedList_print_string_list(data);
+  }
 
+}
 void Db_Export(Database *db, char* filename){
   char* ret;
   LinkedListIterator *lli =  LinkedList_iterator(db->list);

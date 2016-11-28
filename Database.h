@@ -18,4 +18,5 @@ extern void Db_Delete(Database* db, char *c);
 extern Database* Db_Lookup(Database *db, char *c);
 extern void Db_Export(Database* db, char* filename);
 extern Database* Db_Import(char* filename);
+extern void Db_print(Database *db);
 extern int main();

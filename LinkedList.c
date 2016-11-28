@@ -114,7 +114,8 @@ LinkedList_add_at_end(LinkedList *list, void *data) {
  */
 bool
 LinkedList_contains(const LinkedList *list, void *data) {
-    for (LinkedListNode *node=list->first; node != NULL; node=node->next) {
+  LinkedListNode *node;
+    for (node=list->first; node != NULL; node=node->next) {
 	if (node->data == data) {
 	    return true;
 	}
@@ -128,7 +129,8 @@ LinkedList_contains(const LinkedList *list, void *data) {
  */
 void
 LinkedList_remove(LinkedList *list, void *data) {
-    for (LinkedListNode *node=list->first; node != NULL; node=node->next) {
+  LinkedListNode *node;
+    for (node=list->first; node != NULL; node=node->next) {
 	if (node->data == data) {
 	    if (node == list->first) {
 		list->first = node->next;
@@ -156,7 +158,8 @@ LinkedList_remove(LinkedList *list, void *data) {
 void *
 LinkedList_element_at(LinkedList *list, int index) {
     int i = 0;
-    for (LinkedListNode *node=list->first; node != NULL; node=node->next) {
+    LinkedListNode *node;
+    for (node=list->first; node != NULL; node=node->next) {
 	if (i == index) {
 	    return node->data;
 	}
@@ -184,7 +187,8 @@ LinkedList_pop(LinkedList *list) {
  */
 void
 LinkedList_iterate(const LinkedList *list, void (*func)(void *)) {
-    for (LinkedListNode *node=list->first; node != NULL; node=node->next) {
+  LinkedListNode *node;
+    for (node=list->first; node != NULL; node=node->next) {
 	func(node->data);
     }
 }
@@ -233,7 +237,8 @@ LinkedListIterator_next(LinkedListIterator *iterator) {
  */
 void
 LinkedList_print_string_list(LinkedList *list) {
-  for (LinkedListNode *node=list->first; node != NULL; node=node->next) {
+  LinkedListNode *node;
+  for (node=list->first; node != NULL; node=node->next) {
     printf("%s", node->data);
     if (node->next != NULL) {
 	    printf(" ");
@@ -245,8 +250,8 @@ LinkedList_print_string_list(LinkedList *list) {
 char*
 LinkedList_export(LinkedList *list){
   char* ret;
-
-  for (LinkedListNode *node=list->first; node != NULL; node=node->next) {
+LinkedListNode *node;
+  for (node=list->first; node != NULL; node=node->next) {
     ret = concat(ret, node->data);
     if (node->next != NULL) {
       ret = concat(ret, ",");
@@ -272,7 +277,7 @@ int main(){
   LinkedList_add_at_end(x, "my");
   LinkedList_add_at_end(x, "name");
   LinkedList_print_string_list(x);
-  
+
   return 0;
 }
 
