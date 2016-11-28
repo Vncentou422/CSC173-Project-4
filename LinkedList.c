@@ -7,6 +7,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "LinkedList.h"
 
 /**
@@ -263,7 +264,7 @@ concat(const char *s1, const char *s2)
     strcat(result, s2);
     return result;
 }
-
+/*
 int main(){
   /*
   LinkedList* x = LinkedList_new();
@@ -271,6 +272,8 @@ int main(){
   LinkedList_add_at_end(x, "my");
   LinkedList_add_at_end(x, "name");
   LinkedList_print_string_list(x);
-  */
+  
   return 0;
 }
+
+*/

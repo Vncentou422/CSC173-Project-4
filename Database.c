@@ -2,7 +2,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-//#include <Database.h>
+#include "Database.h"
 #include <string.h>
 #include "LinkedList.h"
 
@@ -72,7 +72,7 @@ void delete(Database *db, char *c){
   free(lli);
 }
 
-Database lookup(Database *db, char *c){
+Database* lookup(Database *db, char *c){
   char delim[] = ",";
   char* token;
   int toAdd=1;
@@ -113,11 +113,9 @@ Database lookup(Database *db, char *c){
 
 }
 
-int main(){
-  return 0;
-}
 
-void export_db(char* filename){
+
+void export_db(Database *db, char* filename){
   char* ret;
   LinkedListIterator *lli =  LinkedList_iterator(db->list);
   while (LinkedListIterator_has_next(lli)){
@@ -134,4 +132,7 @@ void export_db(char* filename){
 	fprintf(fileOut, "%s\n", ret);
 	fclose(fileOut);
 
+}
+int main(){
+  return 0;
 }

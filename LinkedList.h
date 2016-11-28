@@ -11,6 +11,9 @@
 #define _LinkedList_h_gf
 
 #include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 // Partial declaration
 typedef struct LinkedList LinkedList;
