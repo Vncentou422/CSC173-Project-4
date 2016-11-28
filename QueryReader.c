@@ -3,8 +3,7 @@
 
 int main(void)
 {
-	
-	query("What grade did Tim Chu get in Computation and Formal Systems");
+	query("Where is Tim Chu at 9:00 on Monday");
 	
 }
 
@@ -66,7 +65,67 @@ int query(char* queryInput)
 	if(queryInput[2] == 'e')
 	{
 		
-		printf("2");
+		
+		int iterator = 9;
+		int iterator2 =0;
+		int iterator3 = 0;
+		int iterator4 = 0;
+		char studentName[1000];
+		char time[10000];
+		char day[1000];
+		
+		while(1 < 2)
+		{
+			
+			if(queryInput[iterator] == ' ' && queryInput[iterator+1] == 'a' && queryInput[iterator+2] == 't' && queryInput[iterator+3] == ' ')
+			{
+				
+				break;
+				
+			}
+			
+			else
+			{
+			
+				studentName[iterator2] = (char)queryInput[iterator];
+				iterator++;
+				iterator2++;
+				
+			}
+		
+			
+		}
+		iterator += 4;
+		while(1 < 2)
+		{
+			
+			if(queryInput[iterator] == ' ' && queryInput[iterator+1] == 'o' && queryInput[iterator+2] == 'n' && queryInput[iterator+3] == ' ')
+			{
+				
+				break;
+				
+			}
+			else
+			{
+			
+				time[iterator3] = (char)queryInput[iterator];
+				iterator++;
+				iterator3++;
+				
+			}
+		}
+		iterator += 4;
+		while(iterator < strlen(queryInput) + 1)
+		{
+			day[iterator4] = (char) queryInput[iterator];
+			iterator ++;
+			iterator4 ++;
+		}
+			printf("%s", studentName);
+			printf("\n%s", time);
+			printf("\n%s", day);
+		
+		
 	}
 	
 
