@@ -43,7 +43,7 @@ int query(char* queryInput)
 			
 			
 		}
-		printf("%s", studentName);
+		
 		
 		iterator += 6;
 		while(iterator < strlen(queryInput) + 1)
@@ -53,12 +53,12 @@ int query(char* queryInput)
 			iterator3 ++;
 		}
 		
-		printf("%s" , courseName);
-		
-		
 	
 		
-	}
+		
+	//tim find grade using studentName and courseName
+		
+	}// end query 1
 	
 	//Where is StudentName at Time on Day
 	
@@ -121,12 +121,12 @@ int query(char* queryInput)
 			iterator ++;
 			iterator4 ++;
 		}
-			printf("%s", studentName);
-			printf("\n%s", time);
-			printf("\n%s", day);
+			
 		
 		
-	}
+			//tim find location using studentName time and day 
+		
+	} // end query 2
 	
 
 	
