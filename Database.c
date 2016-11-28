@@ -90,9 +90,11 @@ Database* Db_Lookup(Database *db, char *c){
     toAdd=1;
     void *data = LinkedListIterator_next(lli);
     //going through the individual linked lists
+    dst = strdup(c);
     LinkedListIterator *lliTup =  LinkedList_iterator(data);
     for (token = strtok(dst, delim); token; token = strtok(NULL, delim)){
-      if (LinkedListIterator_has_next(lliTup)){
+          //printf("start");
+      //if (LinkedListIterator_has_next(lliTup)){
         void *dataTup = LinkedListIterator_next(lliTup);
         char *str = (char*)dataTup;
         if(strcmp(token, "*")!=0){
@@ -100,10 +102,7 @@ Database* Db_Lookup(Database *db, char *c){
             toAdd=0;
             break;
           }
-        }
-      }
-      else{
-        break;
+      //  }
       }
     }
     if(toAdd==1){

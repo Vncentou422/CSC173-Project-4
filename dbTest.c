@@ -9,7 +9,7 @@ int main(int argc, char **argv) {
   Db_Insert(db1, "CS101,12345,A");
   Db_Insert(db1, "CS101,67890,B");
   Db_Insert(db1, "EE200,12345,C");
-  Database* db2 = Db_Lookup(db1, "CS101,*,*");
+  Database* db2 = Db_Lookup(db1, "*,*,C");
   Db_print(db2);
   //Db_Export(db1, "testOutput.txt");
 }
