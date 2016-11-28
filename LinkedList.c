@@ -265,8 +265,22 @@ concat(char *s1, char *s2)
 {
     char *result =(char *) malloc(strlen(s1)+strlen(s2)+1);//+1 for the zero-terminator
     //in real code you would check for errors in malloc here
-    strcpy(result, s1);
-    strcat(result, s2);
+	int iterator1 = 0;
+	int iterator2 = 0;
+	while(iterator1 < strlen(s1) + 1)
+	{
+		result[iterator1] = s1[iterator1];
+		iterator1++;
+		
+	}
+	while(iterator2 < strlen(s2) + 1)
+	{
+		result[iterator1 + iterator2] = s2[iterator2];
+		iterator2++;
+		
+	}
+    //strcpy(result, s1);
+    //strcat(result, s2);
     return result;
 }
 /*
