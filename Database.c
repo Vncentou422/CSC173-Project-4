@@ -25,7 +25,7 @@ void Db_SetRelations(Database *db, char *c){
 
 void Db_Insert(Database *db, char *c){
   LinkedList *list = LinkedList_new();
-  char delim[] = " ,";
+  char delim[] = ",";
   char* token;
   //tokenize the input string
   for (token = strtok(c, delim); token; token = strtok(NULL, delim))
