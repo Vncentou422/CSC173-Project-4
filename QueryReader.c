@@ -21,8 +21,8 @@ int query(char* queryInput)
 		int iterator = 15;
 		int iterator2 = 0;
 		int iterator3 = 0;
-		char studentName[100];
-		char courseName[100];
+		char studentName[1000];
+		char courseName[1000];
 		while(1< 2)
 		{
 			
